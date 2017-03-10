@@ -1,5 +1,5 @@
 # JLWebImage
-JLWebImage提供了异步下载图片的功能，已经做好了图片缓存，方法如下：
+JLWebImage提供了异步下载图片的功能，已经做好了图片缓存，用一个分类实现，方法如下：
 ```objc
 #import <UIKit/UIKit.h>
 
