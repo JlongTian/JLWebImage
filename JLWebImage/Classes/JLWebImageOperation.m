@@ -18,10 +18,10 @@
         
         JLWebImageManager *manager = [JLWebImageManager sharedWebImageManager];
         
-        // 下载图片
+        // 1.0 下载图片
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_url]];
         
-        // 数据加载失败或者被取消了
+        // 2.0 数据加载失败或者被取消了
         if (data == nil || self.isCancelled) {
             
             // 移除操作
@@ -30,19 +30,19 @@
             
         }
         
+        // 3.0 存到字典中
         UIImage *image = [UIImage imageWithData:data];
-        
-        // 存到字典中
         manager.images[_url] = image;
         
-        //回到主线程显示图片
+        // 4.0 回到主线程显示图片
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             _img.image = image;
         }];
         
-        //将图片文件数据写入沙盒中
+        // 5.0 将图片文件数据写入沙盒中
         [data writeToFile:_file atomically:YES];
-        // 移除操作
+        
+        // 6.0 移除操作
         [manager.operations removeObjectForKey:_url];
         
     }

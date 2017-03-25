@@ -60,6 +60,7 @@ static char loadingURLKey;
         
         //2.2.3 计算出文件的全路径
         NSString *file = [cachesPath stringByAppendingPathComponent:filename];
+        
         //2.2.4 加载沙盒的文件数据
         NSData *data = [NSData dataWithContentsOfFile:file];
         
@@ -67,8 +68,7 @@ static char loadingURLKey;
             
             UIImage *image = [UIImage imageWithData:data];
             self.image = image;
-            //存到字典中
-            manager.images[url] = image;
+            manager.images[url] = image;//存到字典中
             
         }else { //2.2.4.2  下载图片
             
